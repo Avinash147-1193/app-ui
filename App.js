@@ -1,4 +1,4 @@
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -17,6 +17,7 @@ import {
   DrawerItemList,
   DrawerItem,
 } from '@react-navigation/drawer';
+import Post3 from "./components/Post3";
 
 
 const Stack = createNativeStackNavigator();
@@ -62,7 +63,7 @@ function MyDrawer() {
 }
 
 function ExpensesOverview() {
-
+  const navigation = useNavigation();
   return (
     <BottomTabs.Navigator
       screenOptions={({navigation}) => ({
@@ -74,7 +75,7 @@ function ExpensesOverview() {
     >
       <BottomTabs.Screen
         name="Home"
-        component={RecentExpenses}
+        component={Post3}
         options={{
           title: "",
           tabBarLabel: "",

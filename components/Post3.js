@@ -1,6 +1,4 @@
-import { View, FlatList, SafeAreaView } from 'react-native';
-
-
+import { View, FlatList, SafeAreaView, ScrollView, StyleSheet } from 'react-native';
 import Post from "./Post";
 import Post2 from "./post2";
 
@@ -23,13 +21,73 @@ function post3() {
   };
 
   return (
-    
-      <View>
+    <ScrollView>
+      <View style={styles.postContainer}>
         <Post postData={post}/>
         <Post2 post={postReactions} />
       </View>
+
+      <View style={styles.postContainer}>
+        <Post postData={post}/>
+        <Post2 post={postReactions} />
+      </View>
+
+      <View style={styles.postContainer}>
+        <Post postData={post}/>
+        <Post2 post={postReactions} />
+      </View>
+
+      <View style={styles.postContainer}>
+        <Post postData={post}/>
+        <Post2 post={postReactions} />
+      </View>
+
+      <View style={styles.postContainer}>
+        <Post postData={post}/>
+        <Post2 post={postReactions} />
+      </View>
+
+      <View style={styles.postContainer}>
+        <Post postData={post}/>
+        <Post2 post={postReactions} />
+      </View>
+
+      <View style={styles.postContainer}>
+        <Post postData={post}/>
+        <Post2 post={postReactions} />
+      </View>
+
+      <View style={styles.postContainer}>
+        <Post postData={post}/>
+        <Post2 post={postReactions} />
+      </View>
+
+      <View style={styles.postContainer}>
+        <Post postData={post}/>
+        <Post2 post={postReactions} />
+      </View>
+
+      <View style={styles.postContainer}>
+        <Post postData={post}/>
+        <Post2 post={postReactions} />
+      </View>
+
+      <View style={styles.postContainer}>
+        <Post postData={post}/>
+        <Post2 post={postReactions} />
+      </View>
+      
+    </ScrollView>
+      
     
   )
 }
 
 export default post3;
+
+
+const styles = StyleSheet.create({
+  postContainer:{
+    marginBottom: 12
+  }
+})

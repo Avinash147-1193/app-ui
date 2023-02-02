@@ -1,7 +1,7 @@
 import { View, Pressable, StyleSheet } from "react-native";
 import IconHandler from "./IconHandler";
 
-const IconButton = ({icon, size, color, onPress, libraryName}) => {
+const NavigationButton = ({icon, size, color, onPress, libraryName}) => {
     //console.log(icon, size, color, onPress, libraryName, "hi");
     return (
         <Pressable onPress={onPress} android_ripple={{color: 'black', borderless: false,}} style={({pressed}) => pressed && styles.pressed}>
@@ -12,7 +12,7 @@ const IconButton = ({icon, size, color, onPress, libraryName}) => {
     );
 }
 
-export default IconButton;
+export default NavigationButton;
 
 const styles = StyleSheet.create({
     buttonContainer: {

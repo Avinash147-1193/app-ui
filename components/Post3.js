@@ -1,8 +1,8 @@
 import { View, FlatList, SafeAreaView, ScrollView, StyleSheet } from 'react-native';
 import Post from "./Post";
-import Post2 from "./post2";
+import Post2 from "./Post2";
 
-function post3() {
+function Post3() {
   const post = {
     reactorName: 'Ashika Bansali',
     reactorAvatar: '../assets/images/ss1.png',
@@ -83,7 +83,7 @@ function post3() {
   )
 }
 
-export default post3;
+export default Post3;
 
 
 const styles = StyleSheet.create({

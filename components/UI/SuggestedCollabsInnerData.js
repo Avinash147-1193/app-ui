@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     buttonContainer: {
         borderRadius: 10,
         borderWidth: 1,
-        borderColor: GlobalStyles.colors.primary700,
+        borderColor: GlobalStyles.colors.gray700,
     },
     collabButton: {
     },

@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'transparent'
     },
     buttonText: {
-        color: 'white',
+        color: 'black',
         textAlign: 'center',
         fontSize: 17
     },

@@ -1,6 +1,6 @@
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import ManageExpense from "./screens/ManageExpense";
@@ -27,6 +27,8 @@ import {
   DrawerItem,
 } from "@react-navigation/drawer";
 import Post3 from "./components/Post3";
+import TopBarElements from "./components/UI/TopBarElements";
+
 
 const Stack = createNativeStackNavigator();
 const BottomTabs = createBottomTabNavigator();
@@ -87,26 +89,8 @@ function ExpensesOverview() {
         options={{
           title: "",
           tabBarLabel: "",
-          headerTitle: () => (
-            <SearchBar
-              style={styles.searchInput}
-              placeholder="Search..."
-              onChangeText={(text) => {}}
-              onSearchPress={() => console.log("Search Icon is pressed")}
-              onClearPress={() => {}}
-              onPress={() => alert("onPress")}
-            />
-          ),
-          headerRight: () => (
-            <MaterialCommunityIcons
-              name="chat-processing-outline"
-              size={26}
-              style={styles.chat}
-              color={GlobalStyles.colors.accent500}
-              onPress={() => {
-                navigation.navigate("ManageExpense");
-              }}
-            />
+          headerTitle: (tabInfo) => (
+            <TopBarElements props={tabInfo}/>
           ),
           tabBarIcon: (tabInfo) => (
             <View style={tabInfo.focused ? styles.navFocused : ""}>
@@ -129,26 +113,8 @@ function ExpensesOverview() {
         options={{
           title: "",
           tabBarLabel: "",
-          headerTitle: () => (
-            <SearchBar
-              style={styles.searchInput}
-              placeholder="Search..."
-              onChangeText={(text) => {}}
-              onSearchPress={() => console.log("Search Icon is pressed")}
-              onClearPress={() => {}}
-              onPress={() => alert("onPress")}
-            />
-          ),
-          headerRight: () => (
-            <MaterialCommunityIcons
-              name="chat-processing-outline"
-              size={26}
-              style={styles.chat}
-              color={GlobalStyles.colors.accent500}
-              onPress={() => {
-                navigation.navigate("ManageExpense");
-              }}
-            />
+          headerTitle: (tabInfo) => (
+            <TopBarElements props={tabInfo}/>
           ),
           tabBarIcon: (tabInfo) => (
             <View style={tabInfo.focused ? styles.navFocused : ""}>
@@ -170,29 +136,9 @@ function ExpensesOverview() {
         name="Post"
         component={AllExpenses}
         options={{
+          presentation: "modal",
           title: "",
           tabBarLabel: "",
-          headerTitle: () => (
-            <SearchBar
-              style={styles.searchInput}
-              placeholder="Search..."
-              onChangeText={(text) => {}}
-              onSearchPress={() => console.log("Search Icon is pressed")}
-              onClearPress={() => {}}
-              onPress={() => alert("onPress")}
-            />
-          ),
-          headerRight: () => (
-            <MaterialCommunityIcons
-              name="chat-processing-outline"
-              size={26}
-              style={styles.chat}
-              color={GlobalStyles.colors.accent500}
-              onPress={() => {
-                navigation.navigate("ManageExpense");
-              }}
-            />
-          ),
           tabBarIcon: (tabInfo) => (
             <View style={tabInfo.focused ? styles.navFocused : ""}>
               <AntDesign
@@ -214,27 +160,9 @@ function ExpensesOverview() {
         component={NotificationsPage}
         options={{
           title: "",
-          tabBarLabel: "",
-          headerTitle: () => (
-            <SearchBar
-              style={styles.searchInput}
-              placeholder="Search..."
-              onChangeText={(text) => {}}
-              onSearchPress={() => console.log("Search Icon is pressed")}
-              onClearPress={() => {}}
-              onPress={() => alert("onPress")}
-            />
-          ),
-          headerRight: () => (
-            <MaterialCommunityIcons
-              name="chat-processing-outline"
-              size={26}
-              style={styles.chat}
-              color={GlobalStyles.colors.accent500}
-              onPress={() => {
-                navigation.navigate("ManageExpense");
-              }}
-            />
+          tabBarLabel: "", 
+          headerTitle: (tabInfo) => (
+            <TopBarElements props={tabInfo}/>
           ),
           tabBarIcon: (tabInfo) => (
             <View style={tabInfo.focused ? styles.navFocused : ""}>
@@ -258,38 +186,22 @@ function ExpensesOverview() {
         options={{
           title: "",
           tabBarLabel: "",
-          headerTitle: () => (
-            <SearchBar
-              style={styles.searchInput}
-              placeholder="Search..."
-              onChangeText={(text) => {}}
-              onSearchPress={() => console.log("Search Icon is pressed")}
-              onClearPress={() => {}}
-              onPress={() => alert("onPress")}
-            />
-          ),
-          headerRight: () => (
-            <MaterialCommunityIcons
-              name="chat-processing-outline"
-              size={26}
-              style={styles.chat}
-              color={GlobalStyles.colors.accent500}
-              onPress={() => {
-                navigation.navigate("ManageExpense");
-              }}
-            />
+          headerTitle: (tabInfo) => (
+            <TopBarElements props={tabInfo}/>
           ),
           tabBarIcon: (tabInfo) => (
             <View style={tabInfo.focused ? styles.navFocused : ""}>
-              <AntDesign
-                name="rocket1"
-                size={tabInfo.size}
-                color={
-                  tabInfo.focused
-                    ? GlobalStyles.colors.gray700
-                    : GlobalStyles.colors.primary700
-                }
-              />
+              <View style={StyleSheet.iconContainer}>
+                <AntDesign
+                  name="rocket1"
+                  size={tabInfo.size}
+                  color={
+                    tabInfo.focused
+                      ? GlobalStyles.colors.gray700
+                      : GlobalStyles.colors.primary700
+                  }
+                />
+              </View>
             </View>
           ),
         }}
@@ -326,20 +238,30 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
+  navTextActiveStyle: {
+    color: GlobalStyles.colors.gray700,
+  },
+  navTextPassiveStyle: {
+    color: GlobalStyles.colors.gray500,
+  },
+  navText: {
+    color: GlobalStyles.colors.primary700,
+  },
+  iconContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignContent: 'center',
+
+  },
+  navIcon: {
+    flex: 1,
+    flexDirection: 'column',
+  },
   container: {
     flex: 1,
     backgroundColor: GlobalStyles.colors.primary700,
-    alignItems: "center",
     justifyContent: "center",
-  },
-  searchInput: {
-    backgroundColor: GlobalStyles.colors.accent500,
-    marginBottom: 7,
-    width: 270,
-  },
-  chat: {
-    marginLeft: -9,
-    paddingLeft: -10,
+    alignItems: "center",
   },
   navFocused: {
     borderTopColor: GlobalStyles.colors.gray700,
